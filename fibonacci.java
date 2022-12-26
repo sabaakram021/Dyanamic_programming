@@ -7,7 +7,8 @@ public class fibonacci {
         int []memo = new int[n+1];
         // System.out.println(findNth_fibonacci(n));
         // System.out.println(findNth_fibonacci_memo(n,memo));
-        System.out.println(findNth_fibonacci_tabu(n));
+        // System.out.println(findNth_fibonacci_tabu(n));
+        System.out.println(findNth_fibonacci_tabu_optimized(n));
     }
 
     // fibonacci using Recursion
@@ -43,6 +44,18 @@ public class fibonacci {
             }
         }
         return mem[n];
+    }
+
+    //using optimized tabulation
+    public static int findNth_fibonacci_tabu_optimized(int n){
+        if(n==0||n==1)return n;
+        int first = 0,second=1;
+        for(int i=2;i<=n;i++){
+            int sum = first+second;
+            first=second;
+            second=sum;
+        }
+        return second;
     }
 
 }
