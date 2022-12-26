@@ -7,7 +7,8 @@ public class climbStairWays {
         int []mem = new int[n+1];
         // System.out.println(findWays(n)); 
         // System.out.println(findWays_memo(n,mem));
-        System.out.println(findWays_tabu(n));
+        // System.out.println(findWays_tabu(n));
+        System.out.println(findWays_opti_tabulation(n));
     }
 
     //climb stair using recursion
@@ -49,6 +50,20 @@ public class climbStairWays {
             }
         }
         return mem[n];
+    }
+
+    // using optimized tabulation
+    public static int findWays_opti_tabulation(int n){
+        if(n==0 || n==1)return 1;
+        if(n==2)return 2;
+        int first = 1,second = 1, third = 2;
+        for(int i=3;i<=n;i++){
+            int sum=first+second+third;
+            first=second;
+            second=third;
+            third=sum;
+        }
+        return third;
     }
 
 }
