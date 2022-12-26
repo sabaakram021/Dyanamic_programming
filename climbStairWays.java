@@ -6,7 +6,8 @@ public class climbStairWays {
         int n =sc.nextInt();
         int []mem = new int[n+1];
         // System.out.println(findWays(n)); 
-        System.out.println(findWays_memo(n,mem));
+        // System.out.println(findWays_memo(n,mem));
+        System.out.println(findWays_tabu(n));
     }
 
     //climb stair using recursion
@@ -33,6 +34,21 @@ public class climbStairWays {
         int two_step=findWays(n-2);
         int three_step=findWays(n-3);
         return mem[n] = one_step+two_step+three_step;
+    }
+
+    //using tabulaton
+    public static int findWays_tabu(int n){
+        int []mem = new int[n+1];
+        for(int i=0;i<=n;i++){
+            if(i==0 || i==1){
+                mem[i]=1;
+            }else if(i==2){
+                mem[i]=2;
+            }else{
+                mem[i]=mem[i-1]+mem[i-2]+mem[i-3];
+            }
+        }
+        return mem[n];
     }
 
 }
