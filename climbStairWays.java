@@ -6,9 +6,9 @@ public class climbStairWays {
         int n =sc.nextInt();
         int []mem = new int[n+1];
         // System.out.println(findWays(n)); 
-        // System.out.println(findWays_memo(n,mem));
+        System.out.println(findWays_memo(n,mem));
         // System.out.println(findWays_tabu(n));
-        System.out.println(findWays_opti_tabulation(n));
+        // System.out.println(findWays_opti_tabulation(n));
     }
 
     //climb stair using recursion
@@ -28,6 +28,7 @@ public class climbStairWays {
             mem[n]=1;
             return 1;
         }
+        if(n<0)return 0;
         if(mem[n]!=0){
             return mem[n];
         }
