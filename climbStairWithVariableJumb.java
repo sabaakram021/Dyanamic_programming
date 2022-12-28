@@ -15,6 +15,7 @@ public class climbStairWithVariableJumb {
         System.out.println(climbStairsVarJump_memo(0, n, arr, mem));
     }
 
+
     // using recursion
     public static int climbStairsVarJump_recur(int currStep, int totalStep, int[] arr) {
         if (currStep == totalStep)
@@ -26,11 +27,11 @@ public class climbStairWithVariableJumb {
             // if(currStep+step<=totalStep){
             ans += climbStairsVarJump_recur(currStep + step, totalStep, arr);
             // }
-
         }
         return ans;
     }
 
+    // using memoization
     public static int climbStairsVarJump_memo(int currStep, int totalStep, int[] arr, int[] mem) {
         if (currStep == totalStep) {
             return mem[currStep] = 1;
@@ -46,5 +47,4 @@ public class climbStairWithVariableJumb {
         }
         return mem[currStep] = ans;
     }
-
 }
